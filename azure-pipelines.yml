@@ -13,13 +13,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: UseDotNet@2
-  displayName: 'Install .NET Core SDK'
-  inputs:
-    packageType: 'sdk'
-    version: '5.0.x'
-    includePreviewVersions: true
-
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
