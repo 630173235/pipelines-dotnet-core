@@ -37,12 +37,3 @@ steps:
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
-
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: '<Azure service connection>'
-    appType: 'webAppLinux'
-    appName: 'MyWebsite'
-    deployToSlotOrASE: true
-    slotName: 'production'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
