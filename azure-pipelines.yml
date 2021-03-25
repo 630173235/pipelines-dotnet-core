@@ -24,7 +24,7 @@ steps:
   inputs:
     command: 'restore'
     feedsToUse: 'select'
-    vstsFeed: 'my-vsts-feed' # A series of numbers and letters
+    vstsFeed: '5c232253-c9fa-4d61-b145-4432b44a6ef0'
 
 - task: DotNetCoreCLI@2
   inputs:
