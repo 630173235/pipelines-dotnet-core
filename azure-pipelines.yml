@@ -7,12 +7,19 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: UseDotNet@2
+  displayName: 'Install .NET Core SDK'
+  inputs:
+    packageType: 'sdk'
+    version: '5.0.x'
+    includePreviewVersions: true
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
@@ -37,3 +44,11 @@ steps:
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
+  
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'C&AI (7d5b3896-0b6b-4ace-962f-0e73ffd1c3b8)'
+    appType: 'webApp'
+    appName: 'myfirstapp-test-on-premises-db'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
