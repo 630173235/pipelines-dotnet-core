@@ -15,12 +15,19 @@ variables:
   dotnetConfig: ' -c Release -f netcoreapp2.1 -o $(Build.ArtifactStagingDirectory)' 
 
 steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
+    vstsFeed: '5c232253-c9fa-4d61-b145-4432b44a6ef0'
+    includeNuGetOrg: false
 - task: DotNetCoreCLI@2 # 预定义的task,使用dotnet进行发布编译
   inputs:
-    command: publish
-    publishWebProjects: False
-    arguments: ' $(hostBuildPath) $(dotnetConfig)'
-    zipAfterPublish: True
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '$(hostBuildPath) $(dotnetConfig)'
+    zipAfterPublish: false
+    modifyOutputPath: false
 
 - task: PublishBuildArtifacts@1 # 预定义的task
   displayName: 'publish artifact: drop'
