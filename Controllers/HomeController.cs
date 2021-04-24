@@ -12,7 +12,16 @@ namespace pipelines_dotnet_core.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            Console.WriteLine( "index" );
+            try
+            {
+                throw new Exception("Exception...........");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+             return View();
         }
 
         public IActionResult Privacy()
