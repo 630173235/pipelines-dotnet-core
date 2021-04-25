@@ -23,14 +23,14 @@ namespace pipelines_dotnet_core.Controllers
 
         public IActionResult Index()
         {
-            _logger.LogError( "index" );
+            _logger.LogInformation( "index" );
             try
             {
                 throw new Exception("Exception...........");
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.ToString());
+                _logger.LogError(e.ToString());
             }
 
             return View();
