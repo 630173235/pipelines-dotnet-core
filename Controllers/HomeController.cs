@@ -1,32 +1,44 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using pipelines_dotnet_core.Models;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace pipelines_dotnet_core.Controllers
 {
+
     public class HomeController : Controller
     {
+        private ILogger _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
+
         public IActionResult Index()
         {
-            Console.WriteLine( "index" );
+            _logger.LogError( "index" );
             try
             {
                 throw new Exception("Exception...........");
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                _logger.LogInformation(e.ToString());
             }
-             return View();
+
+            return View();
         }
 
         public IActionResult Privacy()
         {
-            System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
+            _logger.LogError("If you're seeing this, something bad happened");
             throw new Exception("Custom Exception...........");
         }
 
