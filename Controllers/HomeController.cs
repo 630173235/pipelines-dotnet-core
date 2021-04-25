@@ -26,7 +26,7 @@ namespace pipelines_dotnet_core.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            throw new Exception("Custom Exception...........");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
