@@ -26,6 +26,7 @@ namespace pipelines_dotnet_core.Controllers
 
         public IActionResult Privacy()
         {
+            System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
             throw new Exception("Custom Exception...........");
         }
 
