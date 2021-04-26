@@ -23,10 +23,10 @@ namespace pipelines_dotnet_core.Controllers
 
         public IActionResult Index()
         {
-            _logger.LogInformation( "index" );
+            _logger.LogDebug( "index" );
             try
             {
-                throw new Exception("Exception...........");
+                throw new Exception("Custom Index Exception...........");
             }
             catch (Exception e)
             {
